@@ -2,17 +2,17 @@
 part of 'todo_cubit.dart';
 
 abstract class TodoState extends Equatable {
-  String todo;
-  List<String> todoList;
-  
-  TodoState(this.todo, this.todoList);
-
+  List<String> list;
+  TodoState({
+    required this.list,
+  });
   @override
   List<Object> get props => [];
 }
 
 class TodoInitial extends TodoState {
-  TodoInitial() : super('', []);
+  TodoInitial({required super.list});
+  
+  
 }
-
 
