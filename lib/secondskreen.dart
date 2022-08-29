@@ -24,9 +24,9 @@ class SecondskreenState extends State<Secondskreen> {
           appBar: AppBar(),
           body: ListView.separated(
             itemCount: 1,
-            separatorBuilder: (BuildContext context, int index) =>
+            separatorBuilder: (context, index) =>
                 const SizedBox(height: 8),
-            itemBuilder: (BuildContext context, int index) => TextField(
+            itemBuilder: (context, index) => TextField(
               controller: todocontroler,
             ),
           ),

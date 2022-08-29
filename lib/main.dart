@@ -5,6 +5,8 @@ import 'package:treeyni/firstskreen.dart';
 
 void main() {
   runApp(const MyApp());
+  // async{var box = await Hive.initFlutter('listBox');}
+
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => TodoCubit(),
-      child:  MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: FirstScreen(),
       ),

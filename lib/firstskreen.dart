@@ -1,12 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:treeyni/calendar.dart';
 import 'package:treeyni/cubit/todo_cubit.dart';
 import 'package:treeyni/secondskreen.dart';
 
 class FirstScreen extends StatelessWidget {
   FirstScreen({Key? key}) : super(key: key);
-  DateTime data = DateTime.now();
+  final DateTime data = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class FirstScreen extends StatelessWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('${data.day} / ${data.hour} / ${data.year}'),
+              Text('${data.day} / ${data.month} / ${data.year}'),
               IconButton(
                 onPressed: () {
                   Navigator.push(
@@ -37,9 +39,8 @@ class FirstScreen extends StatelessWidget {
           builder: (context, state) {
             return ListView.separated(
               itemCount: state.list.isEmpty ? 1 : state.list.length,
-              separatorBuilder: (BuildContext context, int index) =>
-                  const SizedBox(height: 5),
-              itemBuilder: (BuildContext context, int index) {
+              separatorBuilder: (context, index) => const SizedBox(height: 5),
+              itemBuilder: (context, index) {
                 return Card(
                   color: Colors.grey[300],
                   elevation: 2,
@@ -50,7 +51,7 @@ class FirstScreen extends StatelessWidget {
                         maxRadius: 12,
                         backgroundColor: Colors.amber,
                         child: Text('${index + 1}')),
-                    title: Text(''),
+                    title: Text(state.list.isEmpty ? '' : state.list[index]),
                   ),
                 );
               },
@@ -67,4 +68,12 @@ class FirstScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+class User {
+  String aaaaa;
+  User({
+    required this.aaaaa,
+  });
+
 }

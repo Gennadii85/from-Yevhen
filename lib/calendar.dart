@@ -10,7 +10,7 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
-  DateTime _focusedDay = DateTime.now();
+  DateTime focusedDay = DateTime.now();
   DateTime? _selectedDay;
   @override
   Widget build(BuildContext context) {
@@ -27,14 +27,14 @@ class _CalendarState extends State<Calendar> {
         calendarStyle: const CalendarStyle(
             todayDecoration: BoxDecoration(
                 color: Color.fromARGB(255, 55, 192, 73),
-                shape: BoxShape.rectangle),
+                shape: BoxShape.rectangle,),
             todayTextStyle: TextStyle(
-                color: Color.fromARGB(255, 228, 19, 19), fontSize: 16.0)),
+                color: Color.fromARGB(255, 228, 19, 19), fontSize: 16.0,),),
         onDaySelected: (selectedDay, focusedDay) {
           if (!isSameDay(_selectedDay, selectedDay)) {
             setState(() {
               _selectedDay = selectedDay;
-              _focusedDay = focusedDay;
+              focusedDay;
             });
           }
         },

@@ -1,9 +1,9 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+
 part of 'todo_cubit.dart';
 
 abstract class TodoState extends Equatable {
-  List<String> list;
-  TodoState({
+  final List<String> list;
+  const TodoState({
     required this.list,
   });
   @override
@@ -11,8 +11,5 @@ abstract class TodoState extends Equatable {
 }
 
 class TodoInitial extends TodoState {
-  TodoInitial({required super.list});
-  
-  
+  const TodoInitial({required super.list});
 }
-
