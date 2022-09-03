@@ -12,35 +12,49 @@ class Secondskreen extends StatefulWidget {
 
 class SecondskreenState extends State<Secondskreen> {
   final todocontroler = TextEditingController();
-  String name = '';
+  // String name = '';
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => TodoCubit(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          appBar: AppBar(),
-          body: ListView.separated(
-            itemCount: 1,
-            separatorBuilder: (context, index) =>
-                const SizedBox(height: 8),
-            itemBuilder: (context, index) => TextField(
+    return
+        // BlocProvider(
+        //   create: (context) => TodoCubit(),
+        //   child:
+        MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.blueGrey[100],
+        appBar: AppBar(),
+        body: ListView.separated(
+          itemCount: 1,
+          separatorBuilder: (context, index) => const SizedBox(height: 8),
+          itemBuilder: (context, index) {
+            return TextField(
+              style: const TextStyle(fontSize: 18),
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              maxLines: 50,
+              minLines: 5,
               controller: todocontroler,
-            ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              BlocProvider.of<TodoCubit>(context).remove(todocontroler.text);
-              todocontroler.clear();
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => FirstScreen()));
-            },
-            child: const Text('save'),
-          ),
+            );
+          },
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            BlocProvider.of<TodoCubit>(context).save(todocontroler.text);
+            todocontroler.clear();
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => FirstScreen()));
+          },
+          child: const Text('save'),
         ),
       ),
+      // ),
     );
   }
 }

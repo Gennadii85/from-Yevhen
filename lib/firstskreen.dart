@@ -6,8 +6,14 @@ import 'package:treeyni/calendar.dart';
 import 'package:treeyni/cubit/todo_cubit.dart';
 import 'package:treeyni/secondskreen.dart';
 
-class FirstScreen extends StatelessWidget {
+class FirstScreen extends StatefulWidget {
   FirstScreen({Key? key}) : super(key: key);
+
+  @override
+  State<FirstScreen> createState() => _FirstScreenState();
+}
+
+class _FirstScreenState extends State<FirstScreen> {
   final DateTime data = DateTime.now();
 
   @override
@@ -38,20 +44,34 @@ class FirstScreen extends StatelessWidget {
         body: BlocBuilder<TodoCubit, TodoState>(
           builder: (context, state) {
             return ListView.separated(
-              itemCount: state.list.isEmpty ? 1 : state.list.length,
+              itemCount: state.list.isEmpty ? 0 : state.list.length,
               separatorBuilder: (context, index) => const SizedBox(height: 5),
               itemBuilder: (context, index) {
-                return Card(
-                  color: Colors.grey[300],
-                  elevation: 2,
-                  margin: const EdgeInsets.all(10),
-                  key: ValueKey(state.list.isEmpty ? 0 : state.list[index]),
-                  child: ListTile(
-                    leading: CircleAvatar(
-                        maxRadius: 12,
-                        backgroundColor: Colors.amber,
-                        child: Text('${index + 1}')),
-                    title: Text(state.list.isEmpty ? '' : state.list[index]),
+                final item = state.list[index];
+                return Dismissible(
+                  onDismissed: (direction) {
+                    setState(() {
+                      state.list.removeAt(index);
+                    });
+                  },
+                  
+                  background:Container(color: Colors.red),
+                  key: Key(item),
+                  child: Card(
+                    color: Colors.grey[300],
+                    elevation: 2,
+                    margin: const EdgeInsets.all(10),
+                    child: ListTile(
+                        leading: CircleAvatar(
+                            maxRadius: 12,
+                            backgroundColor: Colors.amber,
+                            child: Text('${index + 1}')),
+                        title: Text(
+                          style: const TextStyle(fontSize: 18),
+                          state.list.isEmpty ? '' : state.list[index],
+                        ),
+                        trailing: const Icon(Icons.arrow_back),
+                        onLongPress: () => context.read<TodoCubit>().remove()),
                   ),
                 );
               },
@@ -68,12 +88,4 @@ class FirstScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-class User {
-  String aaaaa;
-  User({
-    required this.aaaaa,
-  });
-
 }

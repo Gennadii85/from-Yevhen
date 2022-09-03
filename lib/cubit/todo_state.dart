@@ -13,3 +13,8 @@ abstract class TodoState extends Equatable {
 class TodoInitial extends TodoState {
   const TodoInitial({required super.list});
 }
+class TodoNewState extends TodoState{
+  TodoNewState({required super.list});
+ 
+
+}
