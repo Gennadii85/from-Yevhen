@@ -54,24 +54,24 @@ class _FirstScreenState extends State<FirstScreen> {
                       state.list.removeAt(index);
                     });
                   },
-                  
-                  background:Container(color: Colors.red),
+                  background: Container(color: Colors.red),
                   key: Key(item),
                   child: Card(
                     color: Colors.grey[300],
                     elevation: 2,
                     margin: const EdgeInsets.all(10),
                     child: ListTile(
-                        leading: CircleAvatar(
-                            maxRadius: 12,
-                            backgroundColor: Colors.amber,
-                            child: Text('${index + 1}')),
-                        title: Text(
-                          style: const TextStyle(fontSize: 18),
-                          state.list.isEmpty ? '' : state.list[index],
-                        ),
-                        trailing: const Icon(Icons.arrow_back),
-                        onLongPress: () => context.read<TodoCubit>().remove()),
+                      leading: CircleAvatar(
+                          maxRadius: 12,
+                          backgroundColor: Colors.amber,
+                          child: Text('${index + 1}')),
+                      title: Text(
+                        style: const TextStyle(fontSize: 18),
+                        state.list.isEmpty ? '' : state.list[index],
+                      ),
+                      trailing: const Icon(Icons.arrow_back),
+                      onLongPress: () {},
+                    ),
                   ),
                 );
               },

@@ -23,7 +23,7 @@ class _CalendarState extends State<Calendar> {
         selectedDayPredicate: (day) {
           return isSameDay(_selectedDay, day);
         },
-        // calendarFormat: CalendarFormat.month,
+        calendarFormat: CalendarFormat.month,
         calendarStyle: const CalendarStyle(
             todayDecoration: BoxDecoration(
                 color: Color.fromARGB(255, 55, 192, 73),

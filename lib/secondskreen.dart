@@ -12,15 +12,10 @@ class Secondskreen extends StatefulWidget {
 
 class SecondskreenState extends State<Secondskreen> {
   final todocontroler = TextEditingController();
-  // String name = '';
 
   @override
   Widget build(BuildContext context) {
-    return
-        // BlocProvider(
-        //   create: (context) => TodoCubit(),
-        //   child:
-        MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.blueGrey[100],

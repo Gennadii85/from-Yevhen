@@ -13,14 +13,4 @@ class TodoCubit extends Cubit<TodoState> {
     state.list.add(name);
     emit(TodoNewState(list: state.list));
   }
-
-  void remove() => emit(state..list);
-
-  // void delete() {
-  //   int idx = 0;
-  //   state.list.asMap().keys;
-  //   print(idx);
-  //   state.list.removeAt(idx);
-  //   emit(TodoNewState(list: state.list));
-  // }
 }
