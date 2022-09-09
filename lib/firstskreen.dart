@@ -7,7 +7,7 @@ import 'package:treeyni/cubit/todo_cubit.dart';
 import 'package:treeyni/secondskreen.dart';
 
 class FirstScreen extends StatefulWidget {
-  FirstScreen({Key? key}) : super(key: key);
+  const FirstScreen({Key? key}) : super(key: key);
 
   @override
   State<FirstScreen> createState() => _FirstScreenState();
@@ -70,7 +70,36 @@ class _FirstScreenState extends State<FirstScreen> {
                         state.list.isEmpty ? '' : state.list[index],
                       ),
                       trailing: const Icon(Icons.arrow_back),
-                      onLongPress: () {},
+                      onLongPress: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              var showDialogController =
+                                  TextEditingController(text:state.list[index] );
+                              return AlertDialog(
+                                title: const Text('Change task'),
+                                content: TextFormField(
+                                  minLines : 5,
+                                  maxLines : 50,
+                                  key: Key(item),
+                                  controller: showDialogController,
+                                ),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          state.list.removeAt(index);
+                                          BlocProvider.of<TodoCubit>(context)
+                                              .save(showDialogController.text);
+
+                                          Navigator.of(context).pop();
+                                        });
+                                      },
+                                      child: const Text('save'))
+                                ],
+                              );
+                            });
+                      },
                     ),
                   ),
                 );

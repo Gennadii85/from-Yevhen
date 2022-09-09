@@ -44,7 +44,7 @@ class SecondskreenState extends State<Secondskreen> {
             BlocProvider.of<TodoCubit>(context).save(todocontroler.text);
             todocontroler.clear();
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => FirstScreen()));
+                MaterialPageRoute(builder: (context) => const FirstScreen()));
           },
           child: const Text('save'),
         ),

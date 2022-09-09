@@ -7,14 +7,14 @@ abstract class TodoState extends Equatable {
     required this.list,
   });
   @override
-  List<Object> get props => [];
+  List<Object> get props => [list];
 }
 
 class TodoInitial extends TodoState {
   const TodoInitial({required super.list});
 }
 class TodoNewState extends TodoState{
-  TodoNewState({required super.list});
+  const TodoNewState({required super.list});
  
 
 }

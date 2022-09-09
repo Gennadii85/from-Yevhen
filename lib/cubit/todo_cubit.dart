@@ -13,4 +13,6 @@ class TodoCubit extends Cubit<TodoState> {
     state.list.add(name);
     emit(TodoNewState(list: state.list));
   }
+
+ 
 }
